@@ -1,19 +1,25 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="container">
-  <h4><%= acc.username %></h4>
+  <h4>
+    <%= acc.username %>
+  </h4>
   <% chars.forEach(function(char) { %>
     <div class="card">
-      <h5 class="card-header"><%= char.name %></h5>
+      <h5 class="card-header">
+        <%= char.name %>
+      </h5>
       <div class="card-body">
-        <h5 class="card-title">Level <%= char.level %> <%= race[char.race] %> <%= classes[char.class] %></h5>
-        <p>Is Currently: <%= char.online === 0 ? 'Offline' : 'Online' %></p>
+        <h5 class="card-title">Level <%= char.level %>
+            <%= race[char.race] %>
+              <%= classes[char.class] %>
+        </h5>
+        <p>Is Currently: <%= char.online===0 ? 'Offline' : 'Online' %>
+        </p>
         <ul>
           <li>
             Money: <%= char.money %>
           </li>
         </ul>
       </div>
+      <% }); %>
     </div>
-  <% }); %>
-</div>

@@ -7,7 +7,6 @@ const Account = sequelize.define(
 		id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
-			allowNull: false,
 			primaryKey: true,
 		},
 		username: {
@@ -32,9 +31,12 @@ const Account = sequelize.define(
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
+		reg_mail: {
+			type: Sequelize.STRING,
+			allowNull: false,
+		},
 		online: {
 			type: Sequelize.INTEGER,
-			allowNull: false,
 			default: 0,
 		},
 	},

@@ -1,7 +1,9 @@
-const Sequelize = require('sequelize')
-const sequelize = require('../utils/database').auth
+// const Sequelize = require('sequelize')
+import Sequelize from 'sequelize'
+// const sequelize = require('../utils/database').auth
+import { auth } from '../utils/database.js'
 
-const Account = sequelize.define(
+const Account = auth.define(
 	'account',
 	{
 		id: {
@@ -46,4 +48,4 @@ const Account = sequelize.define(
 	}
 )
 
-module.exports = Account
+export default Account

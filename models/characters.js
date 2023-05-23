@@ -1,7 +1,9 @@
-const Sequelize = require('sequelize')
-const sequelize = require('../utils/database').chars
+// const Sequelize = require('sequelize')
+import { Sequelize } from "sequelize"
+// const sequelize = require('../utils/database').chars
+import {chars} from '../utils/database.js'
 
-const Character = sequelize.define(
+const Character = chars.define(
 	'characters',
 	{
 		guid: {
@@ -49,4 +51,4 @@ const Character = sequelize.define(
 	}
 )
 
-module.exports = Character
+export default Character

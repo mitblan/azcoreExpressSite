@@ -1,6 +1,9 @@
-const asyncHandler = require('express-async-handler')
-const Account = require('../models/accounts')
-const Characters = require('../models/characters')
+// const asyncHandler = require('express-async-handler')
+import asyncHandler from 'express-async-handler'
+// const Account = require('../models/accounts')
+import Account from '../models/accounts.js'
+// const Characters = require('../models/characters')
+import Characters from '../models/characters.js'
 
 // @desc: Get a list of character for a specific account
 // @route: Get /account/:id/chars
@@ -25,4 +28,4 @@ const getCharacters = asyncHandler(async (req, res) => {
 	res.render('account/characters', { char })
 })
 
-module.exports = getCharacters
+export default getCharacters

@@ -1,0 +1,25 @@
+User Profile
+
+<form action="/user/logout" method="post"><button>Logout</button></form>
+
+<%= user.username %>
+
+  <% chars.forEach(function(char) { %>
+    <div class="card">
+      <h5 class="card-header">
+        <%= char.name %>
+      </h5>
+      <div class="card-body">
+        <h5 class="card-title">Level <%= char.level %>
+            <%= race[char.race] %>
+              <%= classes[char.class] %>
+        </h5>
+        <p>Is Currently: <%= char.online===0 ? 'Offline' : 'Online' %>
+        </p>
+        <ul>
+          <li>
+            Money: <%= char.money %>
+          </li>
+        </ul>
+      </div>
+      <% }); %>

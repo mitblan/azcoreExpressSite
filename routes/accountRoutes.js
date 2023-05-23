@@ -1,12 +1,21 @@
-const crypto = require('crypto')
-const express = require( 'express' )
-const {Op} = require('sequelize')
-const asyncHandler = require( 'express-async-handler' )
-const {computeVerifier, params} = require('@azerothcore/ac-nodejs-srp6')
-const Account = require('../models/accounts')
-const Characters = require('../models/characters')
-const race = require('../utils/race')
-const classes = require('../utils/class')
+// const crypto = require('crypto')
+import crypto from 'crypto'
+// const express = require( 'express' )
+import express from 'express'
+// const {Op} = require('sequelize')
+import { Op } from 'sequelize'
+// const asyncHandler = require( 'express-async-handler' )
+import asyncHandler from 'express-async-handler'
+// const {computeVerifier, params} = require('@azerothcore/ac-nodejs-srp6')
+import { computeVerifier, params } from '@azerothcore/ac-nodejs-srp6'
+// const Account = require('../models/accounts')
+import Account from '../models/accounts.js'
+// const Characters = require('../models/characters')
+import Characters from '../models/characters.js'
+// const race = require('../utils/race')
+import race from '../utils/race.js'
+// const classes = require('../utils/class')
+import classes from '../utils/class.js'
 
 const router = express.Router()
 
@@ -68,4 +77,4 @@ router.post( '/', asyncHandler( async ( req, res ) => {
 
 }))
 
-module.exports = router
+export default router

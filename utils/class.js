@@ -11,4 +11,4 @@ const charClass = {
 	11: 'Druid',
 }
 
-module.exports = charClass
+export default charClass

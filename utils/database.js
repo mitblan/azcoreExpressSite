@@ -1,22 +1,29 @@
-const Sequelize = require('sequelize')
+// const Sequelize = require('sequelize')
+import Sequelize from "sequelize"
 
-const auth = new Sequelize('acore_auth', 'acore', 'acore', {
+const auth = new Sequelize(process.env.AUTH_DB, process.env.DB_USER, process.env.DB_PASS, {
 	dialect: 'mysql',
-	host: 'localhost',
+	host: process.env.DB_HOST,
 })
 
-const chars = new Sequelize('acore_characters', 'acore', 'acore', {
+const chars = new Sequelize(process.env.CHAR_DB, process.env.DB_USER, process.env.DB_PASS, {
 	dialect: 'mysql',
-	host: 'localhost',
+	host: process.env.DB_HOST,
 })
 
-const world = new Sequelize('acore_world', 'acore', 'acore', {
+const world = new Sequelize(process.env.WORLD_DB, process.env.DB_USER, process.env.DB_PASS, {
 	dialect: 'mysql',
-	host: 'localhost',
+	host: process.env.DB_HOST,
+} )
+
+const site = new Sequelize( process.env.SITE_DB, process.env.DB_USER, process.env.DB_PASS, {
+	dialect: 'mysql',
+	host: 'localhost'
 })
 
-module.exports = {
+export {
 	auth,
 	chars,
 	world,
+	site
 }

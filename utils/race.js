@@ -12,4 +12,4 @@ const race = {
 	11: 'Draenei',
 }
 
-module.exports = race
+export default race

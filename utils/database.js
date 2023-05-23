@@ -1,5 +1,7 @@
 // const Sequelize = require('sequelize')
 import Sequelize from "sequelize"
+import dotenv from 'dotenv'
+dotenv.config()
 
 const auth = new Sequelize(process.env.AUTH_DB, process.env.DB_USER, process.env.DB_PASS, {
 	dialect: 'mysql',

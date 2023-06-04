@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+  <h2>Create a new Post</h2>
+  <form action="/blog" method="post">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="title" class="form-control" id="title" name="title">
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Post Body</label>
+      <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <input type="checkbox" name="published" id="published" class="form-check-input">
+      <label for="checkbox" class="form-check-label"></label>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+  </form>

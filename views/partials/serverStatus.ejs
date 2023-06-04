@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex justify-content-between">
+      <div>Mitblan's Party Emporium</div>
+      <div>
+        <%= count %> Online
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="fw-bold mb-3">Last Restart:<br />
+      <%= startTime.localDate %> at <%= startTime.localTime %>
+    </div>
+    <div class="fw-lighter fs-6">Uptime:<br />
+      <%= status.h %> hours, <%= status.m %> minutes and <%= status.s %>
+            seconds.
+    </div>
+  </div>
+</div>

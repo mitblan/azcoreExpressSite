@@ -1,0 +1,19 @@
+<% newPosts.forEach((post, index)=> { %>
+  <div class="card">
+    <% if(index===0) { %>
+      <div class="card-header">
+        Latest Blog Posts
+      </div>
+      <% } %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= post.title %>
+          </h5>
+          <div class="card-subtitle mb-3 text-body-secondary fs-6">Posted by: <%= post.user.username %>
+          </div>
+          <p class="card-text">
+            <%= post.body %>
+          </p>
+        </div>
+  </div>
+  <% }) %>

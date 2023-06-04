@@ -43,3 +43,8 @@ const makeAcc = async () => {
 
 
 makeAcc()
+
+// Forum Configuration
+// - Category 
+// -- Thread  -!locked, !pinned
+// --- Replies

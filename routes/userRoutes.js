@@ -1,33 +1,30 @@
-// const express = require( 'express' )
-import express from 'express'
-// const {loginUser,
-//   loginUserForm,
-//   registerUser,
-//   registerUserForm,
-//   logoutUser,
-//   getProfile,
-//   updateUserProfile,
-//   updateUserProfileForm,
-//   deleteUser } = require( '../controllers/userController' )
-import {loginUser,
+const {loginUser,
   loginUserForm,
   registerUser,
-  registerUserForm,
   logoutUser,
   getProfile,
   updateUserProfile,
   updateUserProfileForm,
-  deleteUser
-} from '../controllers/userController.js'
-  import { protect } from '../middleware/authMiddleware.js'
+  deleteUser,
+  legacyAccountCreate} = require( '../controllers/userController' )
+const express = require( 'express' )
+const passport = require( 'passport' )
+
+const {protect} = require('../middleware/protect')
   
 const router = express.Router()
   
-router.route( '/login').get(loginUserForm).post(loginUser)
-router.route( '/register').get(registerUserForm).post(registerUser)
-router.post( '/logout', logoutUser )
-router.route('/profile').get(protect, getProfile).put(updateUserProfile)
-router.get( '/profile/edit', updateUserProfileForm )
-router.delete( '/delete', deleteUser )
+router.route( '/login').get(loginUserForm).post(passport.authenticate( 'local', {
+  successReturnToOrRedirect: '/user/profile',
+  failureRedirect: '/user/login',
+  failureMessage: true,
+  keepSessionInfo: true,
+} ))
+router.route( '/register').get(registerUser).post(registerUser)
+router.get( '/logout', logoutUser )
+router.route('/profile').get(protect, getProfile).put(protect, updateUserProfile)
+router.get( '/profile/edit', protect, updateUserProfileForm )
+router.delete( '/delete', protect, deleteUser )
+router.route('/legacy').get(legacyAccountCreate).post(legacyAccountCreate)
 
-export default router
+module.exports = router

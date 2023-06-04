@@ -1,0 +1,28 @@
+<%- layout('layouts/boilerplate') %>
+  <div class="row">
+    <div class="col-8">
+      <div class="bg-dark-subtle border rounded p-3 shadow mb-3">
+        <h2>Welcome To Mitblan's Party Emporium</h2>
+        <p class="fs-6 fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt quo in nemo maiores!
+          Quasi eos
+          quas id rem
+          cumque corporis? Placeat vel eligendi perspiciatis, fugit magni officiis cumque beatae aspernatur.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, exercitationem temporibus. Dolorem similique
+          molestiae natus ducimus vel aliquid quidem culpa distinctio mollitia officia, velit illo odit quas adipisci
+          voluptatibus cumque.</p>
+        <div class="d-flex justify-content-between col-6 offset-3 mt-5 mb-3">
+          <div>
+            <a href="/start" class="btn btn-success">Get Started</a>
+          </div>
+          <div><a href="/user/register" class="btn btn-primary">Sign Up Now!</a></div>
+        </div>
+      </div>
+      <div><%- partial('partials/newPosts', {newPosts}) %></div>
+    </div>
+    <div class="col-4">
+      <div>
+        <div class="mb-4"><%- partial('partials/serverStatus', {count, startTime, status}) %></div>
+        <div><%- partial('partials/discord', {discord}) %></div>
+      </div>
+    </div>
+  </div>

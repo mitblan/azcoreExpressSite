@@ -1,7 +1,5 @@
-// const Sequelize = require('sequelize')
-import Sequelize from "sequelize"
-import dotenv from 'dotenv'
-dotenv.config()
+const Sequelize = require( 'sequelize' )
+const dotenv = require('dotenv').config()
 
 const auth = new Sequelize(process.env.AUTH_DB, process.env.DB_USER, process.env.DB_PASS, {
 	dialect: 'mysql',
@@ -23,7 +21,7 @@ const site = new Sequelize( process.env.SITE_DB, process.env.DB_USER, process.en
 	host: 'localhost'
 })
 
-export {
+module.exports = {
 	auth,
 	chars,
 	world,

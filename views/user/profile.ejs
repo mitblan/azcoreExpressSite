@@ -1,25 +1,30 @@
-User Profile
+<%- layout('layouts/boilerplate') %>
 
-<form action="/user/logout" method="post"><button>Logout</button></form>
-
-<%= user.username %>
+  <h3 class="mb-5">Characters for <% user.username %>
+  </h3>
 
   <% chars.forEach(function(char) { %>
-    <div class="card">
-      <h5 class="card-header">
-        <%= char.name %>
-      </h5>
-      <div class="card-body">
-        <h5 class="card-title">Level <%= char.level %>
-            <%= race[char.race] %>
-              <%= classes[char.class] %>
+    <div class="mb-5 px-5">
+      <div class="card">
+        <h5 class="card-header">
+          <%= char.name %>
         </h5>
-        <p>Is Currently: <%= char.online===0 ? 'Offline' : 'Online' %>
-        </p>
-        <ul>
-          <li>
-            Money: <%= char.money %>
-          </li>
-        </ul>
+        <div class="card-body <%= race.horde.includes(char.race) ? 'horde-bg' : 'alliance-bg' %>">
+          <h5 class="card-title">Level <%= char.level %>
+              <%= race[char.race] %>
+                <%= classes[char.class] %>
+          </h5>
+          <p>Is Currently: <%= char.online===0 ? 'Offline' : 'Online' %>
+          </p>
+          <ul>
+            <li>
+              Money: <%= char.money %>
+            </li>
+          </ul>
+        </div>
       </div>
-      <% }); %>
+    </div>
+
+    <% }); %>
+
+      <a href="/user/logout" class="p-2 btn btn-danger ">Logout</a>

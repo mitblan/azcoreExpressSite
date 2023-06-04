@@ -1,0 +1,15 @@
+<%- layout('layouts/boilerplate') %>
+  <% posts.forEach((post)=> { %>
+    <div class="border rounded shadow mb-3 p-5">
+      <h4><a href="/blog/<%= post.id %>">
+          <%= post.title %>
+        </a></h4>
+      <p>
+        <%= post.body %>
+      </p>
+      <span class="fs-6 fw-lighter">
+        <%= post.user.username %>
+      </span>
+    </div>
+
+    <% }) %>

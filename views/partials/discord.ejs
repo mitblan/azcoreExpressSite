@@ -1,0 +1,25 @@
+<% discord.members.forEach((member, index)=> { %>
+  <% if (member.status==='online' ) { %>
+    <div class="card">
+      <% if(index===0) { %>
+        <div class="card-header">
+          Discord
+        </div>
+        <% } %>
+          <div class="card-body d-flex">
+            <div class="flex-shrink-0">
+              <img src="<%= member.avatar_url %>" alt="avatar" class="rounded-circle" width="50px">
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="card-title">
+                <%= member.username %>
+              </h5>
+              <div class="card-subtitle mb-3 text-body-secondary fs-6">
+                <%= member.status %>
+              </div>
+            </div>
+          </div>
+    </div>
+    <% } %>
+
+      <% }) %>

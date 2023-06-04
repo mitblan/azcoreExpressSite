@@ -4,41 +4,25 @@
 
 // requirements: requirements will be listed {coreModules: first, npmInstalledModules: second, customMiddleware: thrid, other: fourth}
 
-// const path = require( 'path' )
-import path from 'path'
+const path = require('path')
 
-// const express = require('express')
-import express from 'express'
-// require('dotenv').config()
-import dotenv from 'dotenv'
-dotenv.config()
-import cookieParser from 'cookie-parser'
-// const ejsMate = require( 'ejs-mate' )
-import ejsMate from 'ejs-mate'
-// const asyncHandler = require('express-async-handler')
-import AsyncHandler from 'express-async-handler'
+const express = require('express')
+const dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser')
+const ejsMate = require('ejs-mate')
+const createError = require('http-errors')
+const logger = require('morgan')
+const passport = require( 'passport' )
+const session = require( 'express-session' )
+const flash = require( 'connect-flash' )
 
-// const {auth, chars, world, site} = require( './utils/database' )
-import {auth, chars, world, site} from './utils/database.js'
-// const races = require('./utils/race.js')
-import races from './utils/race.js'
-// const classes = require('./utils/class')
-import classes from './utils/class.js'
+const {site} = require('./utils/database')
 
-// const Character = require('./models/characters')
-import Character from './models/characters.js'
-// const Account = require( './models/accounts' )
-import Account from './models/accounts.js'
-// const User = require('./models/userModel')
-import User from './models/userModel.js'
-
-// const accountRoutes = require( './routes/accountRoutes' )
-import accountRoutes from './routes/accountRoutes.js'
-// const userRoutes = require('./routes/userRoutes')
-import userRoutes from './routes/userRoutes.js'
+const userRoutes = require( './routes/userRoutes' )
+const indexRoutes = require( './routes/indexRoutes' )
+const blogRoutes = require('./routes/blogRoutes')
 
 const port = process.env.PORT || 5000
-const __dirname = path.resolve(path.dirname(new URL(import.meta.url).pathname))
 const publicPath = path.join(__dirname, 'public')
 const viewPath = path.join(__dirname, 'views')
 
@@ -47,43 +31,35 @@ const app = express()
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', viewPath)
-app.use(express.static(publicPath))
 
+app.use( express.static( publicPath ) )
 app.use( express.urlencoded( { extended: true } ) )
+app.use( logger( 'dev' ) )
+app.use( flash() )
+app.use( session( {
+	secret: process.env.APP_SECRET,
+	resave: false,
+	saveUninitialized: false
+} ) )
+app.use( cookieParser(process.env.APP_SECRET) )
 
-app.use(cookieParser())
+app.use(passport.authenticate('session'))
+require('./config/passportConfig')(passport)
 
-app.use('/user', userRoutes)
+app.use('/', indexRoutes)
+app.use( '/user', userRoutes )
+app.use('/blog', blogRoutes)
 
-app.use('/account', accountRoutes)
+// const Post = require( './models/blogModel' )
+// const User = require( './models/userModel' )
 
-app.get('/', async (req, res) => {
-	const chars = await Character.findAll()
-	const acc = await Account.findAll()
-	res.render('home', { chars, acc, races, classes })
-	// res.render('home')
-} )
+// User.hasMany( Post )
+// Post.belongsTo(User)
 
+// Post.sync({alter: true})
 
-	// auth.sync().then( result => {
-	// 	// console.log(result)
-	// })
-	// chars.sync().then( result => {
-	// 	// console.log(result)
-	// }).then( result => {
-	// 	// console.log(result)
-	// })
-	// world.sync().then( result => {
-	// 	// console.log(result)
-	// } )
-	// site.sync({alter: true}).then( result => {
-	// 	// console.log(result)
-	// })
 
 app.listen( port, () => {
 		console.log(`Server running on port: ${port}`)
 	})
-// app.listen( port, () => {
-// 	console.log(`Server running on port: ${port}`)
-// })
 

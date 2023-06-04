@@ -1,0 +1,13 @@
+.horde-bg {
+  background-image: url('/img/hordebg.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.alliance-bg {
+  background-image: url('/img/alliancebg.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}

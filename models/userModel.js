@@ -1,8 +1,6 @@
-// const Sequelize = require('sequelize')
-import { Sequelize } from "sequelize"
-// const sequelize = require( '../utils/database' ).site
-import { site } from '../utils/database.js'
-import bcrypt from 'bcrypt'
+const Sequelize = require('sequelize')
+const site = require( '../utils/database' ).site
+const bcrypt = require('bcrypt')
 
 const User = site.define( 'user', {
   id: {
@@ -40,5 +38,4 @@ User.prototype.matchPassword = async function (enteredPassword) {
 }
 
 
-
-export default User
+module.exports = User

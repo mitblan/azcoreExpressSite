@@ -9,7 +9,6 @@ const User = require('../models/userModel')
 // @route: GET /
 // @access: Public
 const home = ( '/', async ( req, res ) => {
-  console.log(req.user)
   const uptime = await Uptime.findOne( {
     where: {},
     order: [['starttime', 'DESC']]

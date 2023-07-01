@@ -58,6 +58,10 @@ app.use('/blog', blogRoutes)
 
 // Post.sync({alter: true})
 
+app.get('/hiBrooke', (req, res) => {
+	res.send('<h1>Hi Brooke</h1>')
+})
+
 
 app.listen( port, () => {
 		console.log(`Server running on port: ${port}`)
